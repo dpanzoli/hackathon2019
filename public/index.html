@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+  <meta charset="utf-8">
+	  <title>Web-Application démarrage Hackathon</title>
+	  <meta name="description" content="???">
+		<meta name="author" content="David Panzoli">
+		<script src="/packages/jquery/dist/jquery.min.js"></script>
+		<script src="/packages/angular/angular.min.js"></script>
+	</head>
+	<body ng-app="gpecApp" ng-controller="controleur">
+	<table id="tabPersonnels">
+		<tr ng-repeat="p in personnels">
+			<td> {{p.nom}} </td>
+			<td> {{p.date_naissance}} </td>
+		</tr>
+	</table>
+	</body>
+	<script>
+		//either use jQuery or AngularJS...
+/*		$(document).ready(function() {
+			$.ajax({
+				method: 'GET',
+				url: 'personnels/',
+				dataType: 'json',
+				success: function(data) {
+					(data).forEach(function(d,i) {
+						$('#tabPersonnels').append('<p id='+i+'>'+d.nom+'</p>');
+					});
+				},
+				error: function(x, error) {
+					console.log(error);
+				}
+			});
+		});
+*/
+		var app = angular.module('gpecApp', []);
+		
+		app.controller('controleur', function($scope, $http) {
+
+			$http.get('/personnels').then(function(response) {
+				$scope.personnels = response.data;
+			});
+
+		});
+
+	</script>
+
+</html>
+
