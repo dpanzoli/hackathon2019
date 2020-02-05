@@ -1,6 +1,6 @@
 --authors: David Panzoli, Blandine Auger
 --date: 9/12/2019
---version: 1.0
+--version: 1.1
 
 --  ____                  _               
 -- / ___|  ___ _ ____   _(_) ___ ___  ___ 
